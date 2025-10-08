@@ -6,3 +6,4 @@ This is the starting point for your CMPM 121 D1 project. The goal of this projec
 
 I changed the name of the heading to show Clicker Game.
 I am going to see if the change I made to tunr the page background to light grey is working.
+Making change since it's not updating in GitHub
