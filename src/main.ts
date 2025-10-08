@@ -1,26 +1,30 @@
+//Keeping incase I want to use it for later and to have a starting point for Later
+/*
 import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 import "./style.css";
+*/
 
-// Simple counter for demonstration
-let counter: number = 0;
-
+//Keeping incase I want to use it for later and to have a starting point for Later
+/*
 document.body.innerHTML = `
   <p>Example image asset: <img src="${exampleIconUrl}" class="icon" /></p>
 `;
+*/
+let counter: number = 0;
 
 document.body.innerHTML = `
-  <h1>CMPM 121 Project</h1>
+  <h1>Clicker Game</h1>
   <p>Counter: <span id="counter">0</span></p>
-  <button id="increment">Click Me!</button>
+  <button id="increment">Manuel Clicker Button!</button>
 `;
+
+document.body.style.backgroundColor = "lightgrey";
 
 // Add click handler
 const button = document.getElementById("increment")!;
 const counterElement = document.getElementById("counter")!;
 
 button.addEventListener("click", () => {
-  // This looks like to a good place to add some logic!
-  counter++; // Added counter logic
-  counterElement.textContent = counter.toString(); // Added DOM update logic, this is new
-  console.log("I have these thingies:", button, counterElement, counter);
+  counter++;
+  counterElement.textContent = counter.toString();
 });
