@@ -46,13 +46,13 @@ function gameLoop(timestamp: number) {
   }
 
   const deltaTime = (timestamp - currentFrame) / 1000;
-  
+
   currentFrame = timestamp;
-  
+
   const growthThisFrame = 1 * deltaTime;
-  
+
   counter += growthThisFrame;
-  
+
   counterElement.textContent = Math.floor(counter).toString();
 
   requestAnimationFrame(gameLoop);
