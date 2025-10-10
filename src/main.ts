@@ -30,8 +30,33 @@ button.addEventListener("click", () => {
 });
 
 // Added set interval where the counter hould increase by 1 every second.
-setInterval(() => {
-  counter++;
-  console.log("setInterval code is working");
-  counterElement.textContent = counter.toString();
-}, 1000);
+//Will comment out to complete step 4
+// setInterval(() => {
+//   counter++;
+//   console.log("setInterval code is working");
+//   counterElement.textContent = counter.toString();
+// }, 1000);
+
+let currentFrame: number = 0;
+
+//Function for the animation loop
+function gameLoop(timestamp: number) {
+  if (currentFrame === 0) {
+    currentFrame = timestamp;
+  }
+
+  const deltaTime = (timestamp - currentFrame) / 1000;
+  
+  currentFrame = timestamp;
+  
+  const growthThisFrame = 1 * deltaTime;
+  
+  counter += growthThisFrame;
+  
+  counterElement.textContent = Math.floor(counter).toString();
+
+  requestAnimationFrame(gameLoop);
+  console.log("requestion animation frame function is hopefully working!");
+}
+
+requestAnimationFrame(gameLoop);
