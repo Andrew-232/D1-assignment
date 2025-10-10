@@ -17,7 +17,7 @@ const upgradeCost: number = 10;
 document.body.innerHTML = `
   <h1>Clicker Game</h1>
   <p>Counter: <span id="counter">0</span></p>
-  <p>Growth Rate: <span id="growthRateDisplay">0</span> units/sec</p>
+  <p>Auto Clickers Bought: <span id="growthRateDisplay">0</span></p>
   <button id="increment">Manuel Clicker Button!</button>
   <button id="purchaseUpgrade" disabled>Purchase Auto Clicker Upgrade (Cost: ${upgradeCost})</button>
 `;
