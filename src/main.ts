@@ -27,7 +27,11 @@ document.body.style.backgroundColor = "lightgrey";
 // Add click handler
 const button = document.getElementById("increment")!;
 const counterElement = document.getElementById("counter")!;
-const purchaseUpgradeButton = document.getElementById("purchaseUpgrade")!;
+// Asked chat how to fix the problem I had as when I added the code on line 69 it wouldn't work and it told me to add "as HTMLButtonElement" which fixed the problem.
+// To show my understanding on how it explained it to me, Typescript didn't realize this as a button but only as a generic HTMLElement
+const purchaseUpgradeButton = document.getElementById(
+  "purchaseUpgrade",
+) as HTMLButtonElement;
 const growthRateDisplay = document.getElementById("growthRateDisplay")!;
 
 button.addEventListener("click", () => {
@@ -61,8 +65,10 @@ function gameLoop(timestamp: number) {
 
   counterElement.textContent = Math.floor(counter).toString();
 
+  //Added this line as the player was never able to buy an upgrade since the button never got enabled.
+  purchaseUpgradeButton.disabled = counter < upgradeCost;
+
   requestAnimationFrame(gameLoop);
-  console.log("Upgrade Logic is working?");
 }
 
 requestAnimationFrame(gameLoop);
