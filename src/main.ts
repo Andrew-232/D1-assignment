@@ -28,3 +28,9 @@ button.addEventListener("click", () => {
   counter++;
   counterElement.textContent = counter.toString();
 });
+
+// Added set interval where the counter hould increase by 1 every second.
+setInterval(() => {
+  counter++;
+  counterElement.textContent = counter.toString();
+}, 1000);
