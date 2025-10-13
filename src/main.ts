@@ -1,25 +1,22 @@
-//Keeping incase I want to use it for later and to have a starting point for Later
-/*
-import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
-import "./style.css";
-*/
-
-//Keeping incase I want to use it for later and to have a starting point for Later
-/*
-document.body.innerHTML = `
-  <p>Example image asset: <img src="${exampleIconUrl}" class="icon" /></p>
-`;
-*/
 let counter: number = 0;
-let growthRate: number = 0;
-const upgradeCost: number = 10;
+
+let upgrade1Count: number = 0;
+const upgrade1Cost: number = 10;
+
+// Should add another upgrade which will cost 50 but will increase the auto clicker by 5
+// let upgrade2Count: number = 0;
+// const upgrade2Cost: number = 50;
+
+// // Should add another upgrade which will cost 100 but will increase the auto clicker by 20
+// let upgrade3Count: number = 0;
+// const upgrade3Cost: number = 100;
 
 document.body.innerHTML = `
   <h1>Clicker Game</h1>
   <p>Counter: <span id="counter">0</span></p>
   <p>Auto Clickers Bought: <span id="growthRateDisplay">0</span></p>
-  <button id="increment">Manuel Clicker Button!</button>
-  <button id="purchaseUpgrade" disabled>Purchase Auto Clicker Upgrade (Cost: ${upgradeCost})</button>
+  <p><button id="increment">Manuel Clicker Button!</button></p>
+  <p><button id="purchaseUpgrade" disabled>Auto Clicker 1 Upgrade (Cost: ${upgrade1Cost})</button></p>
 `;
 
 document.body.style.backgroundColor = "lightgrey";
@@ -27,8 +24,6 @@ document.body.style.backgroundColor = "lightgrey";
 // Add click handler
 const button = document.getElementById("increment")!;
 const counterElement = document.getElementById("counter")!;
-// Asked chat how to fix the problem I had as when I added the code on line 69 it wouldn't work and it told me to add "as HTMLButtonElement" which fixed the problem.
-// To show my understanding on how it explained it to me, Typescript didn't realize this as a button but only as a generic HTMLElement
 const purchaseUpgradeButton = document.getElementById(
   "purchaseUpgrade",
 ) as HTMLButtonElement;
@@ -41,10 +36,10 @@ button.addEventListener("click", () => {
 
 //Logic for the upgrade
 purchaseUpgradeButton.addEventListener("click", () => {
-  if (counter >= upgradeCost) {
-    counter -= upgradeCost;
-    growthRate++;
-    growthRateDisplay.textContent = growthRate.toString();
+  if (counter >= upgrade1Cost) {
+    counter -= upgrade1Cost;
+    upgrade1Count++;
+    growthRateDisplay.textContent = upgrade1Count.toString();
     console.log("Upgrade bought!");
   }
 });
@@ -61,12 +56,11 @@ function gameLoop(timestamp: number) {
 
   currentFrame = timestamp;
 
-  counter += growthRate * deltaTime;
+  counter += upgrade1Count * deltaTime;
 
   counterElement.textContent = Math.floor(counter).toString();
 
-  //Added this line as the player was never able to buy an upgrade since the button never got enabled.
-  purchaseUpgradeButton.disabled = counter < upgradeCost;
+  purchaseUpgradeButton.disabled = counter < upgrade1Cost;
 
   requestAnimationFrame(gameLoop);
 }
