@@ -66,3 +66,5 @@ function gameLoop(timestamp: number) {
 }
 
 requestAnimationFrame(gameLoop);
+
+console.log("See if changes were made.");
