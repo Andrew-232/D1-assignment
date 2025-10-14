@@ -91,6 +91,7 @@ function gameLoop(timestamp: number) {
   counter += totalGrowthPerSecond * deltaTime;
 
   console.log(counter);
+  console.log(totalGrowthPerSecond);
 
   counterElement.textContent = Math.floor(counter).toString();
 
