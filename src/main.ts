@@ -54,7 +54,7 @@ purchaseUpgradeButton.addEventListener("click", () => {
     counter -= upgrade1Cost;
     upgrade1Count++;
     growthRateDisplay.textContent = upgrade1Count.toString();
-    console.log("Upgrade bought!");
+    console.log("Upgrade 1 bought!");
   }
 });
 
@@ -63,6 +63,7 @@ purchaseAutoClicker5Button.addEventListener("click", () => {
     counter -= upgrade2Cost;
     upgrade2Count++;
     autoClicker5Display.textContent = upgrade2Count.toString();
+    console.log("Upgrade 2 bought!");
   }
 });
 
@@ -71,6 +72,7 @@ purchaseAutoClicker20Button.addEventListener("click", () => {
     counter -= upgrade3Cost;
     upgrade3Count++;
     autoClicker20Display.textContent = upgrade3Count.toString();
+    console.log("Upgrade 3 bought!");
   }
 });
 
@@ -90,7 +92,6 @@ function gameLoop(timestamp: number) {
 
   counterElement.textContent = Math.floor(counter).toString();
 
-  // --- MODIFIED --- Update the disabled status for all three buttons
   purchaseUpgradeButton.disabled = counter < upgrade1Cost;
   purchaseAutoClicker5Button.disabled = counter < upgrade2Cost;
   purchaseAutoClicker20Button.disabled = counter < upgrade3Cost;
