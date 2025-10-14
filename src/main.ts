@@ -90,6 +90,8 @@ function gameLoop(timestamp: number) {
     (upgrade3Count * 20);
   counter += totalGrowthPerSecond * deltaTime;
 
+  console.log(counter);
+
   counterElement.textContent = Math.floor(counter).toString();
 
   purchaseUpgradeButton.disabled = counter < upgrade1Cost;
