@@ -101,4 +101,4 @@ function gameLoop(timestamp: number) {
 
 requestAnimationFrame(gameLoop);
 
-console.log("See if new upgrades are shown.");
+console.log("See if new upgrades 1, 2, and 3 are shown.");
