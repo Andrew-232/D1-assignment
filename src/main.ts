@@ -3,17 +3,17 @@ let counter: number = 0;
 let upgrade1Count: number = 0;
 const upgrade1Cost: number = 10;
 
-// Should add another upgrade which will cost 50 but will increase the auto clicker by 5
 let upgrade2Count: number = 0;
 const upgrade2Cost: number = 50;
 
-// Should add another upgrade which will cost 100 but will increase the auto clicker by 20
 let upgrade3Count: number = 0;
 const upgrade3Cost: number = 100;
 
 document.body.innerHTML = `
   <h1>Clicker Game</h1>
   <p>Counter: <span id="counter">0</span></p>
+  <p>Clicks per second: <span id="cpsDisplay">0</span></p>
+  <hr/>
   <p>Auto Clickers Level 1 Bought: <span id="growthRateDisplay">0</span></p>
   <p><button id="increment">Manuel Clicker Button!</button></p>
   <p><button id="purchaseUpgrade" disabled>Auto Clicker 1 Upgrade (Cost: ${upgrade1Cost})</button></p>
@@ -25,9 +25,10 @@ document.body.innerHTML = `
 
 document.body.style.backgroundColor = "lightgrey";
 
-// Add click handler
 const button = document.getElementById("increment")!;
 const counterElement = document.getElementById("counter")!;
+const cpsDisplayElement = document.getElementById("cpsDisplay")!; // New element
+
 const purchaseUpgradeButton = document.getElementById(
   "purchaseUpgrade",
 ) as HTMLButtonElement;
@@ -43,18 +44,17 @@ const purchaseAutoClicker20Button = document.getElementById(
 ) as HTMLButtonElement;
 const autoClicker20Display = document.getElementById("autoClicker20Display")!;
 
+// Event Listeners
 button.addEventListener("click", () => {
   counter++;
   counterElement.textContent = counter.toString();
 });
 
-//Logic for the upgrade
 purchaseUpgradeButton.addEventListener("click", () => {
   if (counter >= upgrade1Cost) {
     counter -= upgrade1Cost;
     upgrade1Count++;
     growthRateDisplay.textContent = upgrade1Count.toString();
-    console.log("Upgrade 1 bought!");
   }
 });
 
@@ -63,7 +63,6 @@ purchaseAutoClicker5Button.addEventListener("click", () => {
     counter -= upgrade2Cost;
     upgrade2Count++;
     autoClicker5Display.textContent = upgrade2Count.toString();
-    console.log("Upgrade 2 bought!");
   }
 });
 
@@ -72,28 +71,29 @@ purchaseAutoClicker20Button.addEventListener("click", () => {
     counter -= upgrade3Cost;
     upgrade3Count++;
     autoClicker20Display.textContent = upgrade3Count.toString();
-    console.log("Upgrade 3 bought!");
   }
 });
 
-let currentFrame: number = 0;
+// Game Loop
+let lastTime: number = 0;
 
-//Function for the animation loop
 function gameLoop(timestamp: number) {
-  if (currentFrame === 0) {
-    currentFrame = timestamp;
+  if (lastTime === 0) {
+    lastTime = timestamp;
+    requestAnimationFrame(gameLoop);
+    return;
   }
 
-  const deltaTime = (timestamp - currentFrame) / 1000;
+  const deltaTime = (timestamp - lastTime) / 1000;
+  lastTime = timestamp;
 
-  const totalGrowthPerSecond = (upgrade1Count * 1) + (upgrade2Count * 5) +
-    (upgrade3Count * 20);
+  const totalGrowthPerSecond = upgrade1Count * 1 + upgrade2Count * 5 +
+    upgrade3Count * 20;
+
   counter += totalGrowthPerSecond * deltaTime;
 
-  console.log(counter);
-  console.log(totalGrowthPerSecond);
-
   counterElement.textContent = Math.floor(counter).toString();
+  cpsDisplayElement.textContent = totalGrowthPerSecond.toString(); // Update the new stat
 
   purchaseUpgradeButton.disabled = counter < upgrade1Cost;
   purchaseAutoClicker5Button.disabled = counter < upgrade2Cost;
@@ -102,6 +102,5 @@ function gameLoop(timestamp: number) {
   requestAnimationFrame(gameLoop);
 }
 
+// Start the game loop
 requestAnimationFrame(gameLoop);
-
-console.log("See if new upgrades 1, 2, and 3 are shown.");
