@@ -77,7 +77,7 @@ document.body.innerHTML = `
   </style>
 
   <h1>Grains of Sand</h1>
-  <img src="./grains-of-sand.jpg" class="header-image" alt="Grains of Sand Title Image">
+  <img src="https://github.com/Andrew-232/D1-assignment/blob/main/grains-of-sand.jpg" class="header-image" alt="Grains of Sand Title Image">
   
   <p>Grains of Sand: <span id="sandCounter">0</span></p>
   <p>Grains per second: <span id="gpsDisplay">0</span></p>
