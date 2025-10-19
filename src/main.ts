@@ -44,6 +44,28 @@ const gameItems: GameItem[] = [
     count: 0,
     currentCost: 100,
   },
+  // New Item 1
+  {
+    name: "Sandstone Quarry",
+    id: "quarry",
+    description:
+      "Harness geological pressure to form solid rock, chipping away 100 grains per second.",
+    baseCost: 1200,
+    gps: 100,
+    count: 0,
+    currentCost: 1200,
+  },
+  // New Item 2
+  {
+    name: "Shimmering Mirage",
+    id: "mirage",
+    description:
+      "Bend light and reality to manifest illusory sand, adding 500 grains per second.",
+    baseCost: 15000,
+    gps: 500,
+    count: 0,
+    currentCost: 15000,
+  },
 ];
 
 // The main HTML structure with a placeholder for my upgrades.
