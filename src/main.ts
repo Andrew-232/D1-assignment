@@ -82,7 +82,7 @@ document.body.innerHTML = `
   <p>Grains of Sand: <span id="sandCounter">0</span></p>
   <p>Grains per second: <span id="gpsDisplay">0</span></p>
   
-  <img src="./https://github.com/Andrew-232/CMPM-121-Final-D1/single-grain.jpg" id="createSandButton" alt="Click to create a grain of sand">
+  <img src="/https://github.com/Andrew-232/D1-assignment/blob/main/single-grain.jpg" id="createSandButton" alt="Click to create a grain of sand">
   
   <div id="upgradesContainer"></div>
 `;
