@@ -77,12 +77,12 @@ document.body.innerHTML = `
   </style>
 
   <h1>Grains of Sand</h1>
-  <img src="grains-of-sand.jpg" class="header-image" alt="Grains of Sand Title Image">
+  <img src="./grains-of-sand.jpg" class="header-image" alt="Grains of Sand Title Image">
   
   <p>Grains of Sand: <span id="sandCounter">0</span></p>
   <p>Grains per second: <span id="gpsDisplay">0</span></p>
   
-  <img src="single-grain.jpg" id="createSandButton" alt="Click to create a grain of sand">
+  <img src="./single-grain.jpg" id="createSandButton" alt="Click to create a grain of sand">
   
   <div id="upgradesContainer"></div>
 `;
